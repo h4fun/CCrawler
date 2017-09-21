@@ -8,4 +8,5 @@ view = Blueprint('view', __name__)
 
 @view.route('/', methods=['GET'])
 def index():
-    return "hello world"
+    return render_template("index.html")
+
