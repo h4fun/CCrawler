@@ -20,8 +20,7 @@ def index():
             if form.UserPass.data==form.UserPassConfirm.data:
                 if request.form.get('checkbox')=="on":
                     #两次密码一致,且同意条款
-                    db.session.add(User(username=form.UserName.data,password=form.UserPass.data,email=form.UserMail.data))
-                    db.session.commit()
+                    User(username=form.UserName.data,password=form.UserPass.data,email=form.UserMail.data).save()
                     flash(u'注册成功')
 
                 else:

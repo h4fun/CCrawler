@@ -3,7 +3,7 @@ from flask_sqlalchemy import sqlalchemy
 import flask_sqlalchemy as fsa
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:ky3wamgv@localhost:3306/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mima@localhost:3306/test'
 # app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 10
@@ -22,6 +22,10 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
     # def password(self,password):
         # self.password_hash = generate_password_hash(password)
 #
@@ -29,8 +33,3 @@ class User(db.Model):
     #     print 'verifying-----'
     #     return check_password_hash(self.password_hash,password)
 
-
-# if __name__ == '__main__':
-    # u=User(username='test1',email='test1@qq.com',password='test1')
-    # db.session.add(u)
-    # db.session.commit()
