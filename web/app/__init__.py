@@ -18,8 +18,11 @@ def create_app(config_name):
     from app.views.home import home as home_blueprint
     app.register_blueprint(home_blueprint)
 
-    from app.views.user import user as user_blueprint
-    app.register_blueprint(user_blueprint)
+    from app.views.login import login as login_blueprint
+    app.register_blueprint(login_blueprint)
+
+    from app.views.signup import signup as signup_blueprint
+    app.register_blueprint(signup_blueprint)
 
     @app.errorhandler(404)
     def error404(e):

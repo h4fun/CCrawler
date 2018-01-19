@@ -23,13 +23,20 @@
     <div class="tpl-login">
         <div class="tpl-login-content">
             <div class="tpl-login-logo"></div>
-            <form class="am-form tpl-form-line-form">
+
+            <form class="am-form tpl-form-line-form" action="/login"  method="POST">
+                {{ form.hidden_tag() }}
                 <div class="am-form-group">
-                    <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入账号">
+                    <input type="text" class="" name="UserName" placeholder="请输入账号">
                 </div>
                 <div class="am-form-group">
-                    <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
+                    <input type="password" class="" name="UserPass" placeholder="请输入密码">
                 </div>
+                 {% for message in get_flashed_messages() %}
+                    <script>alert("{{message}}");</script>
+                 {% endfor %}
+                 <!--师傅,我这里不会改字体颜色啊,所以alert,emmmmm-->
+
                 <div class="am-form-group tpl-login-remember-me">
                     <input id="remember-me" type="checkbox">
                     <label for="remember-me">
@@ -37,8 +44,8 @@
                     </label>
                 </div>
                 <div class="am-form-group">
-                    <button type="button"
-                            class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交
+                    <button type="submit"
+                            class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" ">提交
                     </button>
                 </div>
             </form>
